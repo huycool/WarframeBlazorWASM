@@ -1,0 +1,25 @@
+﻿@page "/worldStatus"
+@inject HttpClient Http
+
+<h3>WorldStatus</h3>
+@if (worldState != null)
+{
+  @foreach (var news in worldState.News)
+  {
+    <li>@news.Message</li>
+  }
+}
+
+
+<div>@message</div>
+
+@code {
+  private string message = null;
+  private WorldState worldState = null;
+
+  protected override async Task OnInitializedAsync()
+  {
+    worldState = await Http.GetFromJsonAsync<WorldState>("https://api.warframestat.us/pc",
+      new JsonSerializerOptions { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+  }
+}
