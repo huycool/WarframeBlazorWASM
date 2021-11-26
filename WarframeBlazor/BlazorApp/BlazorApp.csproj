@@ -15,4 +15,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\wwwroot404.html" />
+  </ItemGroup>
+
 </Project>
